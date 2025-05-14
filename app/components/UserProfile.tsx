@@ -34,11 +34,11 @@ export function UserProfile() {
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-600">Name</label>
-            <div className="mt-1 text-lg">{user.name}</div>
+            <div className="mt-1 text-lg text-black">{user.name}</div>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-600">Email</label>
-            <div className="mt-1 text-lg">{user.email}</div>
+            <div className="mt-1 text-lg text-black">{user.email}</div>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-600">Role</label>

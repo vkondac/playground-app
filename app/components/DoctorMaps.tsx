@@ -77,7 +77,6 @@ const createClusterCustomIcon = (cluster: any) => {
   });
 };
 
-// Custom Doctor Marker Component
 const DoctorMarker: React.FC<DoctorMarkerProps> = ({ doctor, onClick }) => {
   const customIcon = createDoctorIcon(doctor.imageUrl);
   
