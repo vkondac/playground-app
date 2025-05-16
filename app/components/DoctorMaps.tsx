@@ -11,11 +11,9 @@ import L from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import 'leaflet/dist/leaflet.css';
 
-// Need to fix Leaflet default icon issue in React
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
-// Define the TypeScript interfaces
 interface Doctor {
   id: number;
   name: string;
@@ -44,7 +42,6 @@ const doctorsData: Doctor[] = [
     { id: 10, name: "Dr. Wilson", specialty: "Endocrinology", lat: 45.468, lng: 9.190, imageUrl: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=50&auto=format&fit=crop" },
   ];
 
-// Fix default icon issues
 let DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
@@ -53,7 +50,6 @@ let DefaultIcon = L.icon({
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
-// Custom icon for doctor markers
 const createDoctorIcon = (imageUrl: string) => {
   return L.divIcon({
     html: `<div class="doctor-marker">
@@ -65,7 +61,6 @@ const createDoctorIcon = (imageUrl: string) => {
   });
 };
 
-// Custom icon for cluster
 const createClusterCustomIcon = (cluster: any) => {
   return L.divIcon({
     html: `<div class="cluster-marker">
@@ -90,7 +85,7 @@ const DoctorMarker: React.FC<DoctorMarkerProps> = ({ doctor, onClick }) => {
     >
       <Popup>
         <div className="doctor-popup">
-          <img src={doctor.imageUrl} alt={doctor.name} className="w-16 h-16 rounded-full mb-2" />
+          <img src={doctor.imageUrl} alt={doctor.name} className="w-16 h-16 rounded-full mb-2 object-cover" />
           <h3 className="font-bold text-lg text-black">{doctor.name}</h3>
           <p className="text-sm text-gray-600">{doctor.specialty}</p>
         </div>
@@ -169,7 +164,7 @@ const DoctorMap: React.FC = () => {
               <img 
                 src={selectedDoctor.imageUrl} 
                 alt={selectedDoctor.name} 
-                className="w-16 h-16 rounded-full mr-4"
+                className="w-16 h-16 rounded-full mr-4 object-cover"
               />
               <div>
                 <h3 className="font-bold text-lg text-black">{selectedDoctor.name}</h3>
@@ -199,7 +194,7 @@ const DoctorMap: React.FC = () => {
                 <img 
                   src={doctor.imageUrl} 
                   alt={doctor.name} 
-                  className="w-10 h-10 rounded-full mr-3"
+                  className="w-10 h-10 rounded-full mr-3 object-cover"
                 />
                 <div>
                   <p className="font-medium text-black">{doctor.name}</p>
@@ -214,7 +209,6 @@ const DoctorMap: React.FC = () => {
   );
 };
 
-// CSS for custom markers
 const styles = `
   .doctor-marker {
     width: 40px;
